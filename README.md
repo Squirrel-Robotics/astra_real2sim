@@ -1,5 +1,11 @@
 # 基于 Astra 的 Real-to-Sim 场景搭建流程
 
+## Leju 快递分拣工作区效果图
+
+![Leju 快递分拣工作区在 Isaac Sim 中的渲染效果](leju_sorting_scene/preview.png)
+
+场景文件与打开方式见 [Leju 仿真场景说明](leju_sorting_scene/README.md)。
+
 > 目标：从真实房间/工作台出发，使用 **Polycam 扫描 + Astra 规划与诊断 + Blender 精修 + PBR 材质 + Isaac Sim 物理验收**，得到一个可用于机器人操作、接触和力学实验的仿真环境。
 >
 > 核心原则：**视觉还原、接触几何、动力学参数必须分开验收。** 场景“看起来像”并不等于“接触正确”，更不等于“物理正确”。
