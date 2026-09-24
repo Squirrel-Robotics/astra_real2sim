@@ -1,0 +1,22 @@
+{
+  "visible_meshes": 620,
+  "colliders": 71,
+  "ground_tapes": 3,
+  "wood_support_contacts_world": [
+    [
+      0.42369937896728516,
+      -0.9556490778923035,
+      0.8500000238418579
+    ],
+    [
+      0.8166115283966064,
+      -0.47733843326568604,
+      0.8500000238418579
+    ]
+  ],
+  "width_status": "frame outer width and wood-support height supplied by user",
+  "new_photos_viewed": 8,
+  "robot_model_added": false,
+  "robot_datum_defined": true,
+  "calibration_status": "Photo-estimated pose with user-confirmed approximately 75 cm side separation. Not an independently measured robot-to-world transform."
+}

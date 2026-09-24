@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "outlet_constraints": {
+    "outlet_center_gap_m": 1.5700924586837752e-16,
+    "outlet_width_m": 0.6549999999999999,
+    "fixing_cross_belt_gap_m": 0.78
+  },
+  "two_frame_support_contacts": [
+    {
+      "xy": [
+        0.42369937896728516,
+        -0.9556490778923035
+      ],
+      "wood_top_z_m": 0.8650000095367432,
+      "support_top_z_m": 0.8500000238418579
+    },
+    {
+      "xy": [
+        0.8166115283966064,
+        -0.47733843326568604
+      ],
+      "wood_top_z_m": 0.8649998903274536,
+      "support_top_z_m": 0.8500000238418579
+    }
+  ],
+  "tapes": 3,
+  "side_tape_gap_m": 0.7502417257351598,
+  "tape_has_collision": false,
+  "base_reference_floor_hit_z_m": -1.1175870895385742e-08,
+  "status": "Geometric assembly and USD integration checks; photo-based reference is not a surveyed robot-to-world calibration."
+}

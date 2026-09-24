@@ -1,0 +1,100 @@
+{
+  "source_images": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "side_tapes_align": "chassis left and right edges, user-confirmed",
+  "rear_tape_align": "chassis rear edge, user-confirmed",
+  "side_gap_m": 0.75,
+  "side_gap_accuracy": "user said approximately 75 cm",
+  "photo_scale_factor_from_nominal_tile": 0.9997593616918496,
+  "inferred_tile_edge_m": 0.4998796808459248,
+  "tape_width_m": 0.02,
+  "tape_width_source": "photo estimate",
+  "tapes": [
+    {
+      "name": "Tape_Left_Image",
+      "start": [
+        1.0297190411509873,
+        -0.34253270409795,
+        0.0028
+      ],
+      "end": [
+        1.1112037886420598,
+        -0.13684307454421168,
+        0.0028
+      ],
+      "length_m": 0.22124192138841578
+    },
+    {
+      "name": "Tape_Right_Image",
+      "start": [
+        0.3347592452112339,
+        -0.059652336310842935,
+        0.0028
+      ],
+      "end": [
+        0.4060868780406339,
+        0.11886146559837119,
+        0.0028
+      ],
+      "length_m": 0.19223633547570512
+    },
+    {
+      "name": "Tape_Rear",
+      "start": [
+        0.9581153507461656,
+        0.15289392395717727,
+        0.0028
+      ],
+      "end": [
+        0.7534391766626286,
+        0.24762331543557048,
+        0.0028
+      ],
+      "length_m": 0.2255349060507952
+    }
+  ],
+  "rear_edge_datum": {
+    "translation": [
+      0.8557772637043971,
+      0.20025861969637387,
+      0
+    ],
+    "yaw_degrees": -111.68960541583618,
+    "x_axis": "forward toward work area",
+    "y_axis": "robot left",
+    "z_axis": "up"
+  },
+  "base_placement_reference": {
+    "translation": [
+      0.7204422382612288,
+      -0.10504166233865836,
+      0
+    ],
+    "yaw_degrees": -111.68960541583618,
+    "definition": "ground point halfway between the two side-tape centers",
+    "forward_offset_from_rear_datum_m": 0.3337017843203601,
+    "status": "approximate placement reference, not a measured URDF base_link transform"
+  },
+  "frame_floor_anchor": [
+    0.9119462069370554,
+    -0.49676867418660486
+  ],
+  "plane_to_world_matrix": [
+    [
+      -0.9994351030805559,
+      0.03360765880507144
+    ],
+    [
+      0.03360765880507144,
+      0.9994351030805559
+    ]
+  ],
+  "placement_uncertainty": "Floor-plane position/yaw are photo estimates. Tape gap is user-reported approximate width. Chassis longitudinal extent and actual base_link offset are not measured.",
+  "collision": "tape is visual only; it does not create bumps for robot wheels."
+}

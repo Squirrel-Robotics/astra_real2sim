@@ -1,0 +1,106 @@
+{
+  "PBR_Belt_Unique": {
+    "basecolor": "tabletop_belt_basecolor.png",
+    "roughness": "tabletop_belt_roughness.png",
+    "metallic": "tabletop_belt_metallic.png",
+    "normal": "tabletop_belt_normal.png",
+    "normal_strength": 0.12,
+    "normal_uv_scale": 1
+  },
+  "PBR_HopperInterior": {
+    "basecolor": "hopper_steel_basecolor.png",
+    "roughness": "hopper_steel_roughness_tuned.png",
+    "metallic": "hopper_steel_metallic.png",
+    "normal": "hopper_steel_normal.png",
+    "normal_strength": 0.08,
+    "normal_uv_scale": 8
+  },
+  "PBR_HopperSideA": {
+    "basecolor": "steel_basecolor.png",
+    "roughness": "steel_roughness_tuned.png",
+    "metallic": "steel_metallic.png",
+    "normal": "steel_normal.png",
+    "normal_strength": 0.08,
+    "normal_uv_scale": 8
+  },
+  "PBR_HopperSideB": {
+    "basecolor": "steel_basecolor.png",
+    "roughness": "steel_roughness_tuned.png",
+    "metallic": "steel_metallic.png",
+    "normal": "steel_normal.png",
+    "normal_strength": 0.08,
+    "normal_uv_scale": 8
+  },
+  "PBR_ExtrudedAluminium": {
+    "basecolor": "steel_basecolor.png",
+    "roughness": "steel_roughness_tuned.png",
+    "metallic": "steel_metallic.png",
+    "normal": "steel_normal.png",
+    "normal_strength": 0.08,
+    "normal_uv_scale": 8
+  },
+  "PBR_PaintedFrame": {
+    "basecolor": "tabletop_frame_basecolor.png",
+    "roughness": "tabletop_frame_roughness.png",
+    "normal": "tabletop_frame_normal.png",
+    "metallic": "tabletop_frame_metallic.png",
+    "normal_strength": 0.1,
+    "normal_uv_scale": 1
+  },
+  "PBR_PlywoodTransfer_Unique": {
+    "basecolor": "tabletop_wood_basecolor.png",
+    "roughness": "tabletop_wood_roughness.png",
+    "metallic": "tabletop_wood_metallic.png",
+    "normal": "tabletop_wood_normal.png",
+    "normal_strength": 0.16,
+    "normal_uv_scale": 1
+  },
+  "PBR_PlywoodEdge": {
+    "basecolor": "tabletop_edge_basecolor.png",
+    "roughness": "tabletop_edge_roughness.png",
+    "normal": "tabletop_edge_normal.png",
+    "metallic": "tabletop_edge_metallic.png",
+    "normal_strength": 0.1,
+    "normal_uv_scale": 1
+  },
+  "PBR_Curtain": {
+    "basecolor": "curtain_basecolor.png",
+    "roughness": "curtain_roughness.png",
+    "metallic": "curtain_metallic.png",
+    "normal": "curtain_normal.png",
+    "normal_strength": 0.45,
+    "normal_uv_scale": 1
+  },
+  "PBR_Carpet": {
+    "basecolor": "carpet_basecolor.png",
+    "roughness": "carpet_roughness.png",
+    "metallic": "carpet_metallic.png",
+    "normal": "carpet_normal.png",
+    "normal_strength": 0.45,
+    "normal_uv_scale": 1
+  },
+  "PBR_Liner_Bambu": {
+    "basecolor": "card_bambu_basecolor.png",
+    "roughness": "card_bambu_roughness.png",
+    "metallic": "card_bambu_metallic.png",
+    "normal": "card_bambu_normal.png",
+    "normal_strength": 0.45,
+    "normal_uv_scale": 1
+  },
+  "PBR_Liner_Router": {
+    "basecolor": "card_router_basecolor.png",
+    "roughness": "card_router_roughness.png",
+    "metallic": "card_router_metallic.png",
+    "normal": "card_router_normal.png",
+    "normal_strength": 0.45,
+    "normal_uv_scale": 1
+  },
+  "PBR_Liner_Front": {
+    "basecolor": "card_front_basecolor.png",
+    "roughness": "card_front_roughness.png",
+    "metallic": "card_front_metallic.png",
+    "normal": "card_front_normal.png",
+    "normal_strength": 0.45,
+    "normal_uv_scale": 1
+  }
+}

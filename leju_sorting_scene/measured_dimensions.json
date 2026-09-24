@@ -1,0 +1,21 @@
+{
+  "source": "User message 2026-09-14",
+  "plywood_thickness_m": 0.015,
+  "conveyor_length_m": 1.96,
+  "conveyor_width_m": 0.82,
+  "conveyor_assembly_thickness_m": 0.12,
+  "interpretation": "12 cm is interpreted as belt-plus-side-frame assembly thickness, not flexible belt material thickness. Width used for black upper deck; support hardware is additional.",
+  "unmeasured": [
+    "floor_to_belt_height",
+    "precise board contour dimensions",
+    "bolt sizes",
+    "frame wall thickness"
+  ],
+  "silver_frame_outer_width_m": 0.75,
+  "wood_support_height_m": 0.85,
+  "wood_top_height_m": 0.865,
+  "side_tape_gap_m": 0.75,
+  "conveyor_belt_top_height_m": 0.838,
+  "conveyor_height_source": "derived from measured wood support height and photographed overlap gap, not separately measured",
+  "measurement_accuracy": "user said approximately for silver frame dimensions and tape gap"
+}

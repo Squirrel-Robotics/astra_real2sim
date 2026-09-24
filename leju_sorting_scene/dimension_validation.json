@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "plywood_thickness_m": 0.014999985694885254,
+  "conveyor_oriented_outer_dimensions_m": [
+    1.959999746338268,
+    0.8199999813248549,
+    0.11999995307996869
+  ],
+  "silver_frame_outer_post_width_m": 0.7499998753059338,
+  "wood_support_crossbar_top_m": 0.8500000163912773,
+  "wood_top_m": 0.865,
+  "width_interpretation": "overall conveyor deck including painted side rims; frame width measured across post outer faces"
+}

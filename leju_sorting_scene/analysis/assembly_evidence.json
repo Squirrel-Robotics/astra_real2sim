@@ -1,0 +1,79 @@
+{
+  "H_new_1_to_old_scene": [
+    [
+      -5.237870529085113e-05,
+      0.000544131629285217,
+      -0.8093982371614905
+    ],
+    [
+      7.142110852911905e-05,
+      -0.0008023172748852087,
+      1.1927171895945214
+    ],
+    [
+      -7.865613059278728e-05,
+      0.0009661726322973442,
+      -1.44381822976077
+    ]
+  ],
+  "H_new_2_to_old_scene": [
+    [
+      0.009807855728412265,
+      -0.0038817442996961103,
+      -1.0057250573673775
+    ],
+    [
+      -0.01348790395537234,
+      0.0052041133651092916,
+      0.9164736565487186
+    ],
+    [
+      0.018208331145750205,
+      -0.008266794382133107,
+      -1.7504131699905519
+    ]
+  ],
+  "outlet_seam_photo1_px": [
+    [
+      647,
+      76
+    ],
+    [
+      686,
+      1257
+    ]
+  ],
+  "outlet_seam_old_scene_xy": [
+    [
+      0.5642332434654236,
+      -0.8287957906723022
+    ],
+    [
+      0.5695661306381226,
+      -0.8231607675552368
+    ]
+  ],
+  "near_rim_photo2_px": [
+    [
+      590,
+      1045
+    ],
+    [
+      617,
+      1780
+    ]
+  ],
+  "near_rim_old_scene_xy": [
+    [
+      2.04829740524292,
+      -4.532320499420166
+    ],
+    [
+      0.3563115894794464,
+      -0.3551599085330963
+    ]
+  ],
+  "note": "Image-plane registration is not calibrated metrology; use seam and assembly constraints, retain uncertainty for unmeasured quantities.",
+  "status": "rejected initial direct feature matching; not used in final model",
+  "reason": "Degenerate correspondence sets from repeated wood patterns. Final registration uses manual initialization and mutually checked texture matches in refined_registration.json."
+}

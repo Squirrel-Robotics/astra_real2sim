@@ -1,0 +1,71 @@
+{
+  "wood_photos": [
+    1,
+    3
+  ],
+  "wood_color_adjustment": {
+    "median_source_1": [
+      0.8469362258911133,
+      0.7925245761871338,
+      0.7250153422355652
+    ],
+    "median_source_3": [
+      0.8390969634056091,
+      0.8068014979362488,
+      0.7634804248809814
+    ],
+    "target_srgb_estimate": [
+      0.7599999904632568,
+      0.6850000023841858,
+      0.5400000214576721
+    ]
+  },
+  "belt_photo": 2,
+  "belt_crop_px": [
+    [
+      550.0,
+      175.0
+    ],
+    [
+      1415.0,
+      151.0
+    ],
+    [
+      1534.0,
+      1101.0
+    ],
+    [
+      553.0,
+      1138.0
+    ]
+  ],
+  "belt_roughness_estimate": 0.48,
+  "wood_roughness_estimate": 0.56,
+  "normal_maps": "Very weak high-frequency detail only; no observed metric microheight.",
+  "limitations": [
+    "No measured BRDF or cross-polarized illumination separation.",
+    "Board XY still inherits approximate scan plane calibration.",
+    "Photo 02 and 06 are almost the same view and are not counted as independent geometric validation."
+  ],
+  "frame": {
+    "appearance": "Dark painted dielectric frame, flat color and roughness estimate from photos 04/05",
+    "roughness": 0.44
+  },
+  "plywood_edge": {
+    "appearance": "Fine laminated edge; 9 repeating pairs of bands for visual rendering",
+    "measured_thickness_m": 0.015,
+    "layer_count_measured": false
+  },
+  "border_handling": "Exclude narrow image borders from wood sampling to avoid projected background/side faces; extend nearest observed wood into those narrow regions.",
+  "dock_tape": {
+    "source": "new photo 03",
+    "base_color_linear": [
+      0.006,
+      0.007,
+      0.008
+    ],
+    "roughness": 0.56,
+    "metallic": 0,
+    "status": "estimated visual material"
+  }
+}

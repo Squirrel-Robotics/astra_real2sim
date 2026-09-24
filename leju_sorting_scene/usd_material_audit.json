@@ -1,0 +1,301 @@
+[
+  {
+    "material": "PBR_Carpet",
+    "maps": {
+      "basecolor": {
+        "file": "carpet_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "carpet_roughness.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "carpet_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "carpet_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.45,
+    "normal_uv_scale": 1
+  },
+  {
+    "material": "PBR_PaintedFrame",
+    "maps": {
+      "basecolor": {
+        "file": "tabletop_frame_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "tabletop_frame_roughness.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "tabletop_frame_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "tabletop_frame_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.1,
+    "normal_uv_scale": 1
+  },
+  {
+    "material": "PBR_Belt_Unique",
+    "maps": {
+      "basecolor": {
+        "file": "tabletop_belt_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "tabletop_belt_roughness.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "tabletop_belt_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "tabletop_belt_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.12,
+    "normal_uv_scale": 1
+  },
+  {
+    "material": "PBR_PlywoodTransfer_Unique",
+    "maps": {
+      "basecolor": {
+        "file": "tabletop_wood_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "tabletop_wood_roughness.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "tabletop_wood_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "tabletop_wood_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.16,
+    "normal_uv_scale": 1
+  },
+  {
+    "material": "PBR_PlywoodEdge",
+    "maps": {
+      "basecolor": {
+        "file": "tabletop_edge_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "tabletop_edge_roughness.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "tabletop_edge_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "tabletop_edge_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.1,
+    "normal_uv_scale": 1
+  },
+  {
+    "material": "PBR_ExtrudedAluminium",
+    "maps": {
+      "basecolor": {
+        "file": "steel_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "steel_roughness_tuned.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "steel_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "steel_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.08,
+    "normal_uv_scale": 8
+  },
+  {
+    "material": "PBR_HopperSideB",
+    "maps": {
+      "basecolor": {
+        "file": "steel_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "steel_roughness_tuned.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "steel_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "steel_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.08,
+    "normal_uv_scale": 8
+  },
+  {
+    "material": "PBR_Liner_Bambu",
+    "maps": {
+      "basecolor": {
+        "file": "card_bambu_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "card_bambu_roughness.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "card_bambu_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "card_bambu_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.45,
+    "normal_uv_scale": 1
+  },
+  {
+    "material": "PBR_Liner_Router",
+    "maps": {
+      "basecolor": {
+        "file": "card_router_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "card_router_roughness.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "card_router_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "card_router_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.45,
+    "normal_uv_scale": 1
+  },
+  {
+    "material": "PBR_Liner_Front",
+    "maps": {
+      "basecolor": {
+        "file": "card_front_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "card_front_roughness.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "card_front_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "card_front_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.45,
+    "normal_uv_scale": 1
+  },
+  {
+    "material": "PBR_HopperInterior",
+    "maps": {
+      "basecolor": {
+        "file": "hopper_steel_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "hopper_steel_roughness_tuned.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "hopper_steel_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "hopper_steel_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.08,
+    "normal_uv_scale": 8
+  },
+  {
+    "material": "PBR_HopperSideA",
+    "maps": {
+      "basecolor": {
+        "file": "steel_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "steel_roughness_tuned.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "steel_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "steel_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.08,
+    "normal_uv_scale": 8
+  },
+  {
+    "material": "PBR_Curtain",
+    "maps": {
+      "basecolor": {
+        "file": "curtain_basecolor.png",
+        "color_space": "sRGB"
+      },
+      "roughness": {
+        "file": "curtain_roughness.png",
+        "color_space": "raw"
+      },
+      "metallic": {
+        "file": "curtain_metallic.png",
+        "color_space": "raw"
+      },
+      "normal": {
+        "file": "curtain_normal.png",
+        "color_space": "raw"
+      }
+    },
+    "normal_strength": 0.45,
+    "normal_uv_scale": 1
+  }
+]

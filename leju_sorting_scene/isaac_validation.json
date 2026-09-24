@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "isaac_sim": "4.5.0",
+  "up_axis": "Z",
+  "meters_per_unit": 1,
+  "visual_mesh_objects": 620,
+  "evaluated_visual_triangles": 89996,
+  "static_colliders": 71,
+  "pbr_materials_checked": 13,
+  "unresolved_assets": [],
+  "raycasts": {
+    "floor": {
+      "height_m": -5.587935447692871e-08,
+      "expected_m": 0,
+      "collider": "/World/Leju/COLLIDER_Floor_slab/Cube_001"
+    },
+    "belt": {
+      "height_m": 0.8355000019073486,
+      "expected_m": 0.8355,
+      "collider": "/World/Leju/WorkbenchAssembly/ConveyorAssembly/COLLIDER_Belt_body/Cube_009"
+    },
+    "curved_hopper": {
+      "height_m": 1.0372295379638672,
+      "expected_m": 1.0372296950883628,
+      "collider": "/World/Leju/WorkbenchAssembly/SilverFrameAssembly/COLLIDER_Curved_hopper_floor_UV/Curved_hopper_floor_UV_001"
+    }
+  },
+  "bridge_solid_samples": 140,
+  "bridge_open_samples_inside_convex_hull": 111,
+  "drop_steps": 240,
+  "probe_final_z_m": [
+    0.04500000923871994,
+    0.8805000185966492
+  ],
+  "render_stats": {
+    "neutral": {
+      "std_rgb": 54.86377172662017,
+      "mean_rgb": [
+        73.76721498842592,
+        77.50329716435185,
+        82.42620659722222
+      ]
+    },
+    "warm": {
+      "std_rgb": 51.79303314209763,
+      "mean_rgb": [
+        72.82609809027778,
+        72.96095775462963,
+        72.23307002314814
+      ]
+    },
+    "hdri": {
+      "std_rgb": 51.24228164089799,
+      "mean_rgb": [
+        45.965257523148146,
+        44.708491030092596,
+        43.831086516203705
+      ]
+    }
+  },
+  "relight_mean_pixel_difference": {
+    "warm": 5.659300250771605,
+    "hdri": 33.848370949074074
+  },
+  "note": "Visual/physics integration checks only; intrinsic material parameters and hardware dimensions remain estimates."
+}

@@ -1,0 +1,2061 @@
+#usda 1.0
+(
+    defaultPrim = "Leju"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Leju" (
+    customData = {
+        string materialProvenance = "RGB-derived approximate PBR. Base color has approximate illumination suppression; roughness/normal are estimates, not measured intrinsic properties."
+        string mechanism = "Static scene. Motor, belt, cables and small hardware are visual geometry; no actuator or cable dynamics."
+    }
+    prepend references = @./aligned_geometry.usdc@</Leju>
+)
+{
+    def "PhysicsMaterials"
+    {
+        def Material "Contact" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0.02
+            float physics:staticFriction = 0.7
+        }
+    }
+
+    over "_materials"
+    {
+        over "PBR_Carpet"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_Carpet/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_Carpet/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_Carpet/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_Carpet/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_Carpet/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/carpet_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Carpet/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/carpet_roughness.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Carpet/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/carpet_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Carpet/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.45, -0.45, -1, 0)
+                asset inputs:file = @./textures/carpet_normal.png@
+                float4 inputs:scale = (0.9, 0.9, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Carpet/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+        }
+
+        over "PBR_PaintedFrame"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_PaintedFrame/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_PaintedFrame/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_PaintedFrame/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_PaintedFrame/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_PaintedFrame/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/tabletop_frame_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_PaintedFrame/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/tabletop_frame_roughness.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_PaintedFrame/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/tabletop_frame_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_PaintedFrame/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.1, -0.1, -1, 0)
+                asset inputs:file = @./textures/tabletop_frame_normal.png@
+                float4 inputs:scale = (0.2, 0.2, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_PaintedFrame/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+        }
+
+        over "PBR_Belt_Unique"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_Belt_Unique/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_Belt_Unique/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_Belt_Unique/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_Belt_Unique/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_Belt_Unique/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/tabletop_belt_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Belt_Unique/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/tabletop_belt_roughness.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Belt_Unique/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/tabletop_belt_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Belt_Unique/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.12, -0.12, -1, 0)
+                asset inputs:file = @./textures/tabletop_belt_normal.png@
+                float4 inputs:scale = (0.24, 0.24, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Belt_Unique/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+        }
+
+        over "PBR_PlywoodTransfer_Unique"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_PlywoodTransfer_Unique/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_PlywoodTransfer_Unique/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_PlywoodTransfer_Unique/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_PlywoodTransfer_Unique/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_PlywoodTransfer_Unique/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/tabletop_wood_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_PlywoodTransfer_Unique/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/tabletop_wood_roughness.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_PlywoodTransfer_Unique/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/tabletop_wood_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_PlywoodTransfer_Unique/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.16, -0.16, -1, 0)
+                asset inputs:file = @./textures/tabletop_wood_normal.png@
+                float4 inputs:scale = (0.32, 0.32, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_PlywoodTransfer_Unique/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+        }
+
+        over "PBR_PlywoodEdge"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_PlywoodEdge/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_PlywoodEdge/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_PlywoodEdge/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_PlywoodEdge/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_PlywoodEdge/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/tabletop_edge_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_PlywoodEdge/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/tabletop_edge_roughness.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_PlywoodEdge/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/tabletop_edge_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_PlywoodEdge/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.1, -0.1, -1, 0)
+                asset inputs:file = @./textures/tabletop_edge_normal.png@
+                float4 inputs:scale = (0.2, 0.2, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_PlywoodEdge/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+        }
+
+        over "PBR_ExtrudedAluminium"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_ExtrudedAluminium/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_ExtrudedAluminium/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_ExtrudedAluminium/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_ExtrudedAluminium/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_ExtrudedAluminium/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/steel_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_ExtrudedAluminium/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/steel_roughness_tuned.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_ExtrudedAluminium/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/steel_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_ExtrudedAluminium/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.08, -0.08, -1, 0)
+                asset inputs:file = @./textures/steel_normal.png@
+                float4 inputs:scale = (0.16, 0.16, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_ExtrudedAluminium/RGB_PBR_NormalUVScale.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_NormalUVScale"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Leju/_materials/PBR_ExtrudedAluminium/RGB_PBR_UV.outputs:result>
+                float2 inputs:scale = (8, 8)
+                float2 outputs:result
+            }
+        }
+
+        over "PBR_HopperSideB"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_HopperSideB/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_HopperSideB/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_HopperSideB/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_HopperSideB/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_HopperSideB/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/steel_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_HopperSideB/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/steel_roughness_tuned.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_HopperSideB/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/steel_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_HopperSideB/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.08, -0.08, -1, 0)
+                asset inputs:file = @./textures/steel_normal.png@
+                float4 inputs:scale = (0.16, 0.16, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_HopperSideB/RGB_PBR_NormalUVScale.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_NormalUVScale"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Leju/_materials/PBR_HopperSideB/RGB_PBR_UV.outputs:result>
+                float2 inputs:scale = (8, 8)
+                float2 outputs:result
+            }
+        }
+
+        over "PBR_Liner_Bambu"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_Liner_Bambu/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_Liner_Bambu/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_Liner_Bambu/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_Liner_Bambu/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_Liner_Bambu/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/card_bambu_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Liner_Bambu/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/card_bambu_roughness.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Liner_Bambu/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/card_bambu_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Liner_Bambu/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.45, -0.45, -1, 0)
+                asset inputs:file = @./textures/card_bambu_normal.png@
+                float4 inputs:scale = (0.9, 0.9, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Liner_Bambu/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+        }
+
+        over "PBR_Liner_Router"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_Liner_Router/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_Liner_Router/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_Liner_Router/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_Liner_Router/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_Liner_Router/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/card_router_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Liner_Router/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/card_router_roughness.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Liner_Router/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/card_router_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Liner_Router/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.45, -0.45, -1, 0)
+                asset inputs:file = @./textures/card_router_normal.png@
+                float4 inputs:scale = (0.9, 0.9, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Liner_Router/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+        }
+
+        over "PBR_Liner_Front"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_Liner_Front/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_Liner_Front/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_Liner_Front/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_Liner_Front/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_Liner_Front/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/card_front_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Liner_Front/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/card_front_roughness.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Liner_Front/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/card_front_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Liner_Front/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.45, -0.45, -1, 0)
+                asset inputs:file = @./textures/card_front_normal.png@
+                float4 inputs:scale = (0.9, 0.9, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Liner_Front/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+        }
+
+        over "PBR_HopperInterior"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_HopperInterior/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_HopperInterior/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_HopperInterior/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_HopperInterior/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_HopperInterior/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/hopper_steel_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_HopperInterior/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/hopper_steel_roughness_tuned.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_HopperInterior/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/hopper_steel_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_HopperInterior/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.08, -0.08, -1, 0)
+                asset inputs:file = @./textures/hopper_steel_normal.png@
+                float4 inputs:scale = (0.16, 0.16, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_HopperInterior/RGB_PBR_NormalUVScale.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_NormalUVScale"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Leju/_materials/PBR_HopperInterior/RGB_PBR_UV.outputs:result>
+                float2 inputs:scale = (8, 8)
+                float2 outputs:result
+            }
+        }
+
+        over "PBR_HopperSideA"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_HopperSideA/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_HopperSideA/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_HopperSideA/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_HopperSideA/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_HopperSideA/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/steel_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_HopperSideA/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/steel_roughness_tuned.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_HopperSideA/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/steel_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_HopperSideA/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.08, -0.08, -1, 0)
+                asset inputs:file = @./textures/steel_normal.png@
+                float4 inputs:scale = (0.16, 0.16, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_HopperSideA/RGB_PBR_NormalUVScale.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_NormalUVScale"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </Leju/_materials/PBR_HopperSideA/RGB_PBR_UV.outputs:result>
+                float2 inputs:scale = (8, 8)
+                float2 outputs:result
+            }
+        }
+
+        over "PBR_Curtain"
+        {
+            token outputs:surface.connect = </Leju/_materials/PBR_Curtain/RGB_PBR_Surface.outputs:surface>
+
+            def Shader "RGB_PBR_Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </Leju/_materials/PBR_Curtain/RGB_PBR_basecolor.outputs:rgb>
+                float inputs:metallic = 0
+                float inputs:metallic.connect = </Leju/_materials/PBR_Curtain/RGB_PBR_metallic.outputs:r>
+                normal3f inputs:normal.connect = </Leju/_materials/PBR_Curtain/RGB_PBR_normal.outputs:rgb>
+                float inputs:roughness = 0.5
+                float inputs:roughness.connect = </Leju/_materials/PBR_Curtain/RGB_PBR_roughness.outputs:r>
+                token outputs:surface
+            }
+
+            def Shader "RGB_PBR_UV"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "RGB_PBR_basecolor"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/curtain_basecolor.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Curtain/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_roughness"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/curtain_roughness.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Curtain/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_metallic"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/curtain_metallic.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Curtain/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+
+            def Shader "RGB_PBR_normal"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.45, -0.45, -1, 0)
+                asset inputs:file = @./textures/curtain_normal.png@
+                float4 inputs:scale = (0.9, 0.9, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </Leju/_materials/PBR_Curtain/RGB_PBR_UV.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+                float3 outputs:rgb
+            }
+        }
+    }
+
+    over "COLLIDER_Wall_back"
+    {
+        over "Cube_004" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Packing_box_1"
+    {
+        over "Cube_081" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Chair_seat"
+    {
+        over "Cube_107" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Whiteboard_stand"
+    {
+        over "Cube_099" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Packing_box_2"
+    {
+        over "Cube_084" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Chair_back"
+    {
+        over "Cube_109" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Whiteboard_base_001"
+    {
+        over "Cube_105" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "WorkbenchAssembly"
+    {
+        over "ConveyorAssembly"
+        {
+            over "COLLIDER_Steel_leg"
+            {
+                over "Cube_140" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Slotted_yellow_foot_001"
+            {
+                over "Cube_150" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Foot_anchor_plate"
+            {
+                over "Cube_146" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Steel_leg_001"
+            {
+                over "Cube_148" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Foot_anchor_plate_002"
+            {
+                over "Cube_164" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Foot_anchor_plate_001"
+            {
+                over "Cube_154" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Slotted_yellow_foot"
+            {
+                over "Cube_142" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Belt_body"
+            {
+                over "Cube_009" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Steel_leg_002"
+            {
+                over "Cube_158" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Longitudinal_lower_beam"
+            {
+                over "Cube_176" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Steel_leg_003"
+            {
+                over "Cube_166" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Foot_anchor_plate_003"
+            {
+                over "Cube_172" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Slotted_yellow_foot_003"
+            {
+                over "Cube_168" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Transverse_lower_beam_001"
+            {
+                over "Cube_174" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Transverse_lower_beam"
+            {
+                over "Cube_156" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Longitudinal_lower_beam_001"
+            {
+                over "Cube_178" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Slotted_yellow_foot_002"
+            {
+                over "Cube_160" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Drive_lower_enclosure"
+            {
+                over "Cube_024" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Painted_side_rail_001"
+            {
+                over "Cube_015" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Painted_side_rail"
+            {
+                over "Cube_011" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+        }
+
+        over "PlywoodAssembly"
+        {
+            over "COLLIDER_Plywood_support_pad"
+            {
+                over "Cube_019" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Plywood_support_pad_001"
+            {
+                over "Cube_021" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Plywood_bridge_UV"
+            {
+                over "Plywood_bridge_UV_003" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "none"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+        }
+
+        over "SilverFrameAssembly"
+        {
+            over "COLLIDER_Frame_wood_bracket_web__1"
+            {
+                over "Cube_028" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_lower_side"
+            {
+                over "Cube_224" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_cross_member_003"
+            {
+                over "Cube_243" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Frame_wood_seat__1"
+            {
+                over "Cube_026" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_upper_support"
+            {
+                over "Cube_226" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Rubber_post_foot_002"
+            {
+                over "Cube_237" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Rubber_post_foot_003"
+            {
+                over "Cube_239" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Frame_wood_seat_1"
+            {
+                over "Cube_030" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Rubber_post_foot"
+            {
+                over "Cube_228" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_cross_member_002"
+            {
+                over "Cube_242" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Curved_hopper_floor_UV"
+            {
+                over "Curved_hopper_floor_UV_001" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "none"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_cross_member"
+            {
+                over "Cube_240" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_vertical_post_001"
+            {
+                over "Cube_223" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Rubber_post_foot_001"
+            {
+                over "Cube_230" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_mid_side"
+            {
+                over "Cube_225" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Hopper_high_side_A"
+            {
+                over "Hopper_high_side_A_001" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "none"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_cross_member_001"
+            {
+                over "Cube_241" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_vertical_post_002"
+            {
+                over "Cube_231" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Hopper_high_side_B"
+            {
+                over "Hopper_high_side_B_001" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "none"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_vertical_post_003"
+            {
+                over "Cube_232" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Frame_wood_bracket_web_1"
+            {
+                over "Cube_032" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_vertical_post"
+            {
+                over "Cube_222" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_lower_side_001"
+            {
+                over "Cube_233" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_upper_support_001"
+            {
+                over "Cube_235" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Control_box"
+            {
+                over "Cube_248" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Tslot_mid_side_001"
+            {
+                over "Cube_234" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+
+            over "COLLIDER_Frame_wood_support_crossbar"
+            {
+                over "Cube_017" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+                    uniform token physics:approximation = "convexHull"
+                    bool physics:collisionEnabled = 1
+                    uniform token purpose = "guide"
+                    token visibility = "invisible"
+                }
+            }
+        }
+    }
+
+    over "COLLIDER_Packing_box_3"
+    {
+        over "Cube_087" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Chair_leg_001"
+    {
+        over "Cube_113" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Chair_leg"
+    {
+        over "Cube_111" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_White_electrical_enclosure"
+    {
+        over "Cube_260" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Wall_electrical_unit"
+    {
+        over "Cube_119" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Packing_box_4"
+    {
+        over "Cube_090" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Whiteboard_panel"
+    {
+        over "Cube_093" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Floor_slab"
+    {
+        over "Cube_001" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Chair_leg_002"
+    {
+        over "Cube_115" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Wall_left"
+    {
+        over "Cube_002" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Chair_leg_003"
+    {
+        over "Cube_117" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Whiteboard_base"
+    {
+        over "Cube_101" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Wall_right"
+    {
+        over "Cube_003" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "COLLIDER_Whiteboard_stand_001"
+    {
+        over "Cube_103" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Leju/PhysicsMaterials/Contact>
+            uniform token physics:approximation = "convexHull"
+            bool physics:collisionEnabled = 1
+            uniform token purpose = "guide"
+            token visibility = "invisible"
+        }
+    }
+
+    over "RobotDock" (
+        customData = {
+            double sideGapMeters = 0.75
+            string status = "Approximate photo-based placement. Side gap approximately 75 cm confirmed by user; actual robot base_link offset is not calibrated."
+        }
+    )
+    {
+        def Xform "RearEdgeDatum" (
+            customData = {
+                string definition = "Ground rear tape midpoint"
+            }
+        )
+        {
+            float xformOp:rotateZ = -111.689606
+            double3 xformOp:translate = (0.8557772637043971, 0.20025861969637387, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ"]
+        }
+
+        def Xform "BasePlacementReference" (
+            customData = {
+                string definition = "Ground midpoint of side-tape centers; verify actual base_link offset"
+            }
+        )
+        {
+            float xformOp:rotateZ = -111.689606
+            double3 xformOp:translate = (0.7204422382612288, -0.10504166233865836, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ"]
+        }
+    }
+}
+
