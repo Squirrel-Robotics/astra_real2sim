@@ -19,6 +19,6 @@ USD 使用米和 Z-up。`exports/aligned_neutral.usda` 建立重力场景；`exp
 
 两条侧胶带间距约 0.75 m。`/World/Leju/RobotDock/RearEdgeDatum` 和 `BasePlacementReference` 是放置参考，不是已标定的机器人 `base_link`。胶带是视觉薄片，不增加碰撞障碍。
 
-这里是**静态工作区资产**。输送带没有动力学驱动，仓库也不包含快递包裹的动态仿真、机器人本体或策略服务。材质、摩擦和未测尺寸是近似值。用于抓取策略或实机对齐前，应重新测量关键尺寸和接触参数。
+这里是**静态工作区资产**。仓库的 [机器人与动态包裹场景](../leju_robot_parcels/README.md) 另行叠加机器人本体和五个包裹。输送带没有动力学驱动，仓库不包含策略服务。材质、摩擦和未测尺寸是近似值。用于抓取策略或实机对齐前，应重新测量关键尺寸和接触参数。
 
 原服务器上的 `isaac_validation.json`、`alignment_validation.json` 和 `dimension_validation.json` 是该版本当时的检查记录；仓库迁移后尚未重新运行 Isaac Sim 验证。

@@ -6,6 +6,12 @@
 
 场景文件与打开方式见 [Leju 仿真场景说明](leju_sorting_scene/README.md)。
 
+### 机器人与动态包裹
+
+![Leju 机器人与五个包裹的 Isaac Sim 场景](leju_robot_parcels/preview.png)
+
+机器人、两只纸箱和三只快递袋的模型及完整场景见 [机器人与包裹场景说明](leju_robot_parcels/README.md)。
+
 > 目标：从真实房间/工作台出发，使用 **Polycam 扫描 + Astra 规划与诊断 + Blender 精修 + PBR 材质 + Isaac Sim 物理验收**，得到一个可用于机器人操作、接触和力学实验的仿真环境。
 >
 > 核心原则：**视觉还原、接触几何、动力学参数必须分开验收。** 场景“看起来像”并不等于“接触正确”，更不等于“物理正确”。

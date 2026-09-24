@@ -1,0 +1,3170 @@
+#usda 1.0
+(
+    defaultPrim = "Leju5WRevo2"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Leju5WRevo2"
+{
+    quatd xformOp:orient = (1, 0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def Xform "root_joint" (
+        variants = {
+            string Physics = "PhysX"
+            string Sensor = "Sensors"
+        }
+        prepend variantSets = ["Physics", "Sensor"]
+    )
+    {
+        over "sim_world_anchor" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "base_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "base_link"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "dummy_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "base_to_joint" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "knee_link"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "knee_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "leg_Link"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "leg_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "waist_pitch_Link"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "waist_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "waist_yaw_Link"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "waist_yaw_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "torso"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "zarm_l1_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "l_arm_pitch"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "zarm_l2_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "l_arm_roll"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "zarm_l3_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "l_arm_yaw"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "zarm_l4_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "l_forearm"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "zarm_l5_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "l_hand_yaw"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "zarm_l6_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "l_hand_roll"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "zarm_l7_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "l_wrist_cuff_clipped"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_base_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/HandBlack>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_base_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/HandBlack> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "palm_pad"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_d405_bracket" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/BracketAlloy>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "mesh_0"
+                {
+                    over "box" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/BracketAlloy> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "box" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/BracketAlloy> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_2"
+                {
+                    over "box" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/BracketAlloy> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_3"
+                {
+                    over "cylinder" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/BracketAlloy> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_4"
+                {
+                    over "cylinder" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/BracketAlloy> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "left_index_proximal_Link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_index_proximal_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_index_distal_Link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_index_distal_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_index_tip" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_index_tip_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "sphere" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_middle_proximal_Link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_middle_proximal_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_middle_distal_Link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_middle_distal_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_middle_tip" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_middle_tip_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "sphere" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_pinky_proximal_Link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_pinky_proximal_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_pinky_distal_Link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_pinky_distal_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_pinky_tip" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_pinky_tip_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "sphere" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_ring_proximal_Link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_ring_proximal_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_ring_distal_Link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_ring_distal_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_ring_tip" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_ring_tip_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "sphere" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_thumb_metacarpal_Link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_thumb_metacarpal_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_thumb_proximal_Link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_thumb_proximal_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_thumb_distal_Link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_thumb_distal_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_thumb_tip" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "left_thumb_tip_Link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "sphere" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "left_wrist_camera_color_optical_frame" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/D405Housing>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "mesh_0"
+                {
+                    over "box" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/D405Housing> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "box" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/D405Front> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_2"
+                {
+                    over "cylinder" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/D405Glass> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_3"
+                {
+                    over "cylinder" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/D405Glass> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_4"
+                {
+                    over "box" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/D405Housing> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "zarm_l7_end_effector_1" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "zarm_l7_end_effector_2" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "zarm_l7_end_effector" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "zarm_r1_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "r_arm_pitch"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "zarm_r2_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "r_arm_roll"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "zarm_r3_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "r_arm_yaw"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "zarm_r4_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "r_forearm"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "zarm_r5_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "r_hand_yaw"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "zarm_r6_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "r_hand_roll"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "zarm_r7_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "r_wrist_cuff_clipped"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_base_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/HandBlack>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_base_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/HandBlack> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "palm_pad"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_d405_bracket" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/BracketAlloy>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "mesh_0"
+                {
+                    over "box" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/BracketAlloy> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "box" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/BracketAlloy> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_2"
+                {
+                    over "box" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/BracketAlloy> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_3"
+                {
+                    over "cylinder" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/BracketAlloy> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_4"
+                {
+                    over "cylinder" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/BracketAlloy> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "right_index_proximal_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_index_proximal_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_index_distal_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_index_distal_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_index_tip" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_index_tip"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "sphere" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_middle_proximal_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_middle_proximal_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_middle_distal_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_middle_distal_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_middle_tip" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_middle_tip"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "sphere" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_pinky_proximal_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_pinky_proximal_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_pinky_distal_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_pinky_distal_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_pinky_tip" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_pinky_tip"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "sphere" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_ring_proximal_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_ring_proximal_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_ring_distal_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_ring_distal_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_ring_tip" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_ring_tip"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "sphere" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_thumb_metacarpal_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_thumb_metacarpal_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_thumb_proximal_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_thumb_proximal_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_thumb_distal_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/FingerMetal>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_thumb_distal_link"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/FingerMetal> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_thumb_tip" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "right_thumb_tip"
+                {
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "sphere" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "right_wrist_camera_color_optical_frame" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/D405Housing>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "mesh_0"
+                {
+                    over "box" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/D405Housing> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_1"
+                {
+                    over "box" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/D405Front> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_2"
+                {
+                    over "cylinder" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/D405Glass> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_3"
+                {
+                    over "cylinder" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/D405Glass> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+
+                over "mesh_4"
+                {
+                    over "box" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/D405Housing> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "zarm_r7_end_effector_1" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "zarm_r7_end_effector_2" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "zarm_r7_end_effector" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "zhead_1_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "head_yaw"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "radar" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "head_radar"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "zhead_2_link" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "head_pitch"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "camera_base" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "head_camera_color_optical_frame_0" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "head_camera_color_optical_frame" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "head_camera_base" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "head_camera"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/RobotSilver> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+        }
+
+        over "head_camera_depth" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/RobotSilver>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+            }
+        }
+
+        over "wheel_left_behind" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "wheel_left_behind"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "wheel_left_front" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "wheel_left_front"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "wheel_right_behind" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "wheel_right_behind"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "wheel_right_front" (
+            prepend apiSchemas = ["PhysxRigidBodyAPI", "MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Leju5WRevo2/Looks/WheelRubber>
+            bool physxRigidBody:disableGravity = 1
+
+            over "visuals" (
+                instanceable = false
+            )
+            {
+                over "wheel_right_front"
+                {
+                    rel material:binding = None
+
+                    over "mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Leju5WRevo2/Looks/WheelRubber> (
+                            bindMaterialAs = "strongerThanDescendants"
+                        )
+                    }
+                }
+            }
+
+            over "collisions" (
+                prepend apiSchemas = ["PhysxCollisionAPI"]
+                instanceable = false
+            )
+            {
+                float physxCollision:contactOffset = 0.0015
+                float physxCollision:restOffset = 0
+            }
+        }
+
+        over "joints"
+        {
+            over "zarm_l1_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_l2_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_l3_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_l4_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_l5_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_l6_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_l7_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "left_index_proximal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "left_index_distal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "left_middle_proximal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "left_middle_distal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "left_pinky_proximal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "left_pinky_distal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "left_ring_proximal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "left_ring_distal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "left_thumb_metacarpal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "left_thumb_proximal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "left_thumb_distal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_r1_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_r2_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_r3_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_r4_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_r5_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_r6_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "zarm_r7_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 90
+                float drive:angular:physics:maxForce = 100
+                float drive:angular:physics:stiffness = 1600
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "right_index_proximal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "right_index_distal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "right_middle_proximal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "right_middle_distal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "right_pinky_proximal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "right_pinky_distal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "right_ring_proximal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "right_ring_distal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "right_thumb_metacarpal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "right_thumb_proximal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+
+            over "right_thumb_distal_joint" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 0.7
+                float drive:angular:physics:maxForce = 0.7
+                float drive:angular:physics:stiffness = 18
+                uniform token drive:angular:physics:type = "force"
+            }
+        }
+
+        over "root_joint" (
+            prepend apiSchemas = ["PhysxArticulationAPI"]
+        )
+        {
+            bool physxArticulation:enabledSelfCollisions = 0
+            int physxArticulation:solverPositionIterationCount = 16
+            int physxArticulation:solverVelocityIterationCount = 4
+        }
+        variantSet "Physics" = {
+            "None" (
+                prepend references = @configuration/robot_base.usd@
+            ) {
+                over "joints" (
+                    active = false
+                )
+                {
+                }
+
+            }
+            "PhysX" (
+                prepend payload = @configuration/robot_physics.usd@
+            ) {
+
+            }
+        }
+        variantSet "Sensor" = {
+            "None" {
+
+            }
+            "Sensors" (
+                prepend payload = @configuration/robot_sensor.usd@
+            ) {
+
+            }
+        }
+    }
+
+    def "Looks"
+    {
+        def Material "RobotSilver"
+        {
+            token outputs:surface.connect = </Leju5WRevo2/Looks/RobotSilver/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.19, 0.205, 0.22)
+                float inputs:metallic = 0.9
+                float inputs:roughness = 0.48
+                token outputs:surface
+            }
+        }
+
+        def Material "HandBlack"
+        {
+            token outputs:surface.connect = </Leju5WRevo2/Looks/HandBlack/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.055, 0.062, 0.069)
+                float inputs:metallic = 0.25
+                float inputs:roughness = 0.58
+                token outputs:surface
+            }
+        }
+
+        def Material "FingerMetal"
+        {
+            token outputs:surface.connect = </Leju5WRevo2/Looks/FingerMetal/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.22, 0.24, 0.26)
+                float inputs:metallic = 0.8
+                float inputs:roughness = 0.43
+                token outputs:surface
+            }
+        }
+
+        def Material "BracketAlloy"
+        {
+            token outputs:surface.connect = </Leju5WRevo2/Looks/BracketAlloy/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.4, 0.39, 0.33)
+                float inputs:metallic = 0.72
+                float inputs:roughness = 0.56
+                token outputs:surface
+            }
+        }
+
+        def Material "WheelRubber"
+        {
+            token outputs:surface.connect = </Leju5WRevo2/Looks/WheelRubber/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.035, 0.04, 0.045)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.8
+                token outputs:surface
+            }
+        }
+
+        def Material "D405Housing"
+        {
+            token outputs:surface.connect = </Leju5WRevo2/Looks/D405Housing/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.035, 0.04, 0.045)
+                float inputs:metallic = 0.05
+                float inputs:roughness = 0.55
+                token outputs:surface
+            }
+        }
+
+        def Material "D405Front"
+        {
+            token outputs:surface.connect = </Leju5WRevo2/Looks/D405Front/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.012, 0.014, 0.017)
+                float inputs:metallic = 0.05
+                float inputs:roughness = 0.34
+                token outputs:surface
+            }
+        }
+
+        def Material "D405Glass"
+        {
+            token outputs:surface.connect = </Leju5WRevo2/Looks/D405Glass/Surface.outputs:surface>
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.009, 0.02, 0.028)
+                float inputs:metallic = 0.25
+                float inputs:roughness = 0.1
+                token outputs:surface
+            }
+        }
+    }
+}

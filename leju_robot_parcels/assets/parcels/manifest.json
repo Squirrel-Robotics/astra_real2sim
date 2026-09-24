@@ -1,0 +1,70 @@
+{
+  "assets": [
+    {
+      "name": "HandoffBox",
+      "size_m": [
+        0.235,
+        0.165,
+        0.135
+      ],
+      "mass_kg": 0.22,
+      "kind": "rigid corrugated cardboard",
+      "usd": "./HandoffBox.usda",
+      "prim_path": "/Asset"
+    },
+    {
+      "name": "FeedBox",
+      "size_m": [
+        0.3,
+        0.22,
+        0.17
+      ],
+      "mass_kg": 0.3,
+      "kind": "rigid corrugated cardboard",
+      "usd": "./FeedBox.usda",
+      "prim_path": "/Asset"
+    },
+    {
+      "name": "TealMailer",
+      "size_m": [
+        0.27,
+        0.205,
+        0.04
+      ],
+      "mass_kg": 0.12,
+      "kind": "wrinkled mailer visual; rigid collision approximation",
+      "usd": "./TealMailer.usda",
+      "prim_path": "/Asset"
+    },
+    {
+      "name": "PurpleMailer",
+      "size_m": [
+        0.25,
+        0.19,
+        0.045
+      ],
+      "mass_kg": 0.12,
+      "kind": "wrinkled mailer visual; rigid collision approximation",
+      "usd": "./PurpleMailer.usda",
+      "prim_path": "/Asset"
+    },
+    {
+      "name": "KraftMailer",
+      "size_m": [
+        0.24,
+        0.185,
+        0.043
+      ],
+      "mass_kg": 0.12,
+      "kind": "wrinkled mailer visual; rigid collision approximation",
+      "usd": "./KraftMailer.usda",
+      "prim_path": "/Asset"
+    }
+  ],
+  "materials": "Procedural cardboard PBR baked in Blender; generated shipping label layout and packing tape; geometric plastic wrinkles",
+  "limitations": [
+    "Parcel dimensions and masses are estimates, not measurements of a specific real package",
+    "Mailer appearance is wrinkled but contact model is rigid",
+    "Synthetic label layout; barcode decoding not validated"
+  ]
+}

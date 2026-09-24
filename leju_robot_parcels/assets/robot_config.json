@@ -1,0 +1,494 @@
+{
+  "sources": {
+    "meshes/base_link.STL": "62e32295ab5a2e0a4dd9cb043fb50a5c1b46ee0c45fbb649366f43880f72d2fe",
+    "meshes/wheel_left_front.STL": "19438caba4bdb0faa73a4062c95222049c3ba4e5f44198ea9f8737e434d08bcd",
+    "meshes/wheel_right_front.STL": "fdddabb55c932e56c701337db4869cc26f82dd04dd58c51cd22b981c4724637a",
+    "meshes/wheel_left_behind.STL": "da546da71e7730a9ddd0b1dd71496e0c036ab18874ebd60ca4b14756d573f74d",
+    "meshes/wheel_right_behind.STL": "b9a58565d7b0cccdeccccf2337c8f1e9802e1fdaf044cae1b426c7d8d1d2ccfa",
+    "meshes/knee_link.STL": "b05320029ef8cf13f5d8429b50a339ab531e2d85f027922a4898f043428ded62",
+    "meshes/leg_Link.STL": "8816f5bd5b862a252beb4365e39476ada509b937906eb6a2d9dedd8a292d1518",
+    "meshes/waist_pitch_Link.STL": "9618c1205a147f81b0744e023de725723d44a45d075ca02322a17ea7a760f117",
+    "meshes/waist_yaw_Link.STL": "0e7c962ad9973a4e7ff819bb7f233085ab3d697a3a9c6a41273f27a6c6703b7e",
+    "meshes/torso.STL": "4e8eaf0229fea30434b054fcf3e78469ec7c952cb78b3cd6e0ddd4a90dc3efeb",
+    "meshes/l_arm_pitch.STL": "0fe363eeb77f816f8a8b6f18dfb1eef7afbbf8897d0d502155f624a0d9fc8957",
+    "meshes/l_arm_roll.STL": "88f200400a4b8d4274cd8949aefa034d4d5eb80d090b1c52dcff6035ce179cf0",
+    "meshes/l_arm_yaw.STL": "6f05b385af99629111702f5206024ebbd02bd6aec9ab4454f110db09af8f0a17",
+    "meshes/l_forearm.STL": "1a9bc9a1e651381c54ef5e56015a5c6b58a9e805783af34c634e4f2bfffbe160",
+    "meshes/l_hand_yaw.STL": "80aef6ba09bfb1d9b6de491e2bfae0a0ff95ba724e0b364740cd5fa599d3781b",
+    "meshes/l_hand_roll.STL": "78b8ccd815d0a05a70f1d82ebd7b82bd947a1a42037e8401584e8efcda8036c5",
+    "meshes/l_hand_pitch_noHand.STL": "d2218b13cc6f70482de86a1d6b9c7c364baaa95cd1f8e117ec3747a0854e2ebc",
+    "meshes/r_arm_pitch.STL": "dd860e65fa8947bf058ed29b67aa26fe244eae72b92543d9f132485b0b1201ac",
+    "meshes/r_arm_roll.STL": "61c2e8332b334b85b86cf06028bfdf9811335ef3ef6110752abc5829459c7f7a",
+    "meshes/r_arm_yaw.STL": "a7580bad91cdc921afbf9278d6da86f349ce03396c70d2f418b42caf2f27f547",
+    "meshes/r_forearm.STL": "914d9ac430f18520afdf6e5d0a00cf2835273dee29abb8c68004cb2b86d73934",
+    "meshes/r_hand_yaw.STL": "ad0fc0bf9b6702f4797329309a414b5ac1213ee15977d257c9715c4a5463b3a9",
+    "meshes/r_hand_roll.STL": "7bfc403c73ac62e1b539369e5aa05c53f07a0cd7bc7c8f2dc67cee57c40c9aaa",
+    "meshes/r_hand_pitch_noHand.STL": "28ee2cb04299525e62ee7f27f191027dbb0294e6f3d29df37a1fbfabc2ff7f5e",
+    "meshes/head_yaw.STL": "b1a806d592126fd9f7ba43d056c1f9866ed2af56dc9736034da1e35373426902",
+    "meshes/head_pitch.STL": "0ef747e6700afdbdb5675630935877b642c8c63df39878faaf4ce1230bab89ed",
+    "meshes/head_camera.STL": "ea101940cbcb96ad5a49e7df460ad6d5ec3107909cf61ff42b11ce6f1d2c43e7",
+    "meshes/head_radar.STL": "17d1fa4fb5358344d7e153922098266a3e13508f71aa9d341859b1608e647bcf",
+    "meshes/left_base_link.STL": "d8851e50188ac14edba1552b37d4ccb8f61c0d7ad7338a8db9623512476e968b",
+    "meshes/left_thumb_metacarpal_Link.STL": "415a75193e7773572b0df8a80fa4e1d187a67901a5ff381a89ee5b7df64735ea",
+    "meshes/left_thumb_proximal_Link.STL": "191650b13c24d76d7cf58e4ba51e3a79ac07906db8639c557da5a98b87b5f316",
+    "meshes/left_thumb_distal_Link.STL": "db9d74a4c4025b3d14fb2f67d3326c4be20002b1c51ef21971cc848d70be630e",
+    "meshes/left_thumb_tip_Link.STL": "5177296e2426d118cc15ca74db26ebbdedf129f7a2b7c1194b2752f19e1fa3cd",
+    "meshes/left_index_proximal_Link.STL": "1fed32c1a8451282b314579eed3903a288a62524dc7d8b08464fb559261bb580",
+    "meshes/left_index_distal_Link.STL": "188a5ef9e447ee78932d072d3ced223a66990e8216b413f1a85f67bb3bd2ebd6",
+    "meshes/left_index_tip_Link.STL": "9f5a11d72375073e8373a02ce604ca99abcb583074ba2f520510b48abc4c5b86",
+    "meshes/left_middle_proximal_Link.STL": "50122ebf6e75698ba2c469efd58e07ad3f82b1a002728cd15802f1c435d54c0c",
+    "meshes/left_middle_distal_Link.STL": "cc4dec97e13c6be231b07f5d092e0d292a9a77c6a707062caf17d3602c22ad73",
+    "meshes/left_middle_tip_Link.STL": "ef4ac885d12e603918722c22000a59827f168f276d9c41651ef0d94175113486",
+    "meshes/left_ring_proximal_Link.STL": "77220c07d5bbc119cb828af89f35cb4cef755bbc98a1cae2dda846268ff59501",
+    "meshes/left_ring_distal_Link.STL": "100a748e3038ed3ce5969f0696133dd3bf9bfa6f1546287272cf44d76a3cacce",
+    "meshes/left_ring_tip_Link.STL": "870a5b7890a41c8fb8e91cd0c4f74f01c64778bf33f29c135b0b0431a489cde1",
+    "meshes/left_pinky_proximal_Link.STL": "9f1408568638fbbec4cf32507d4b233fbd8cdb9c862e07cc7da6cd826497caa6",
+    "meshes/left_pinky_distal_Link.STL": "a2f6a2150559d01e6f07a55cda141d3363de7e6e4259457740dee8afdb17b20f",
+    "meshes/left_pinky_tip_Link.STL": "56eae1cc71cf6acab0a20c1a8e2e470c9ec96f520386c1ea22f10f51e2dbf758",
+    "meshes/right_base_link.STL": "c506bceeb28732ea1220d4a62000064a0621994c4efe711c954cc6605abd4a34",
+    "meshes/right_thumb_metacarpal_link.STL": "bf007bb8ddfd1eda5eba12dc802d9d6ac5b4b183c93c4e1cc9b025a816cfb68b",
+    "meshes/right_thumb_proximal_link.STL": "b1d8154a4f00bb6237b5553a64dda8ef0d9026a87d3d862a643f18284d17f472",
+    "meshes/right_thumb_distal_link.STL": "4aeb45f261a9b9b0010856d45188c6fa5c1ca23485568f2d30728bc23bcf4e44",
+    "meshes/right_thumb_tip.STL": "b7c57cc3473e6709ffb95133274c7986adf23a812ff7afbf5d74dc8ccdc4dd45",
+    "meshes/right_index_proximal_link.STL": "94fdff414f1c29940495d1f0264a50621340cfc30f9b5365b3490d39ae367f2f",
+    "meshes/right_index_distal_link.STL": "a9f2ff38d27d39713915d41996a335a4a7f272b51f2b663fd253df4890d2ea7d",
+    "meshes/right_index_tip.STL": "4af36131feedb7f83a695ff8e7d09a7e8893df96f971b2d363c0d359e3a82bbf",
+    "meshes/right_middle_proximal_link.STL": "56d9f019bad093daf93a736596ab4e7d9b17fb3c79e2be4181d909958cf76a37",
+    "meshes/right_middle_distal_link.STL": "6ca6556cbe479398a4adece02ea2220f7088a237937f9129e6fa8f37a3f8d779",
+    "meshes/right_middle_tip.STL": "844204b7bcf3de3ad500232e2e30ac15a8ec41728be281d0670c7ad1a2b09e34",
+    "meshes/right_ring_proximal_link.STL": "7aa7601fd8360252144de4475e30575277f6ca20dc019e90c7df8ff9f2fc8074",
+    "meshes/right_ring_distal_link.STL": "0075e39ae91e99ca042036d183fc1c0216e703555be258f39ef1bdf1f055d969",
+    "meshes/right_ring_tip.STL": "c3be3c69a1b7cba72d4b09c8ca4e04f3ad15ef2e47f8212bb547be7487f88022",
+    "meshes/right_pinky_proximal_link.STL": "1a4ba525880efd4da2bcdfd5d2d69a684a02f8c7c01f8e185adf23f47469d0f4",
+    "meshes/right_pinky_distal_link.STL": "0beaa421340096156daaa286364058f200b54bd81b079dd335169dd324ab3344",
+    "meshes/right_pinky_tip.STL": "f632c67971d2d6dc8a5edcfcac4db8b3078e346540270bd89a9e9c783d304415"
+  },
+  "approximations": [
+    "Old baked hand geometry clipped at wrist z=-0.07 m; simplified cuff collider. Source meshes untouched.",
+    "Cuff mass estimated as 0.330378 kg, so cuff plus 0.385 kg Revo2 retains the original combined 0.715378 kg; cuff inertia approximated by a cylinder.",
+    "Head pitch fixed at +0.46 rad to view the close manipulation area; original separate-recording head sample was near neutral. This is a task-view initialization, not measured current head pose.",
+    "Revo2 mount [0,0,-0.07] m, left Rz(-pi/2)Rx(pi), right Rz(pi/2)Rx(pi), inferred from old S62 hand geometry; not a calibrated mounting transform.",
+    "Photo-guided mirrored D405 brackets; optics in palm frame x=55 mm, z=-18 mm, looking toward fingers. Housing 42x42x23 mm / 60 g from manufacturer; bracket/optical offsets remain estimates."
+  ],
+  "mimic_targets": {
+    "left_thumb_distal_joint": {
+      "joint": "left_thumb_proximal_joint",
+      "multiplier": 1.0,
+      "offset": 0.0
+    },
+    "left_index_distal_joint": {
+      "joint": "left_index_proximal_joint",
+      "multiplier": 1.155,
+      "offset": 0.0
+    },
+    "left_middle_distal_joint": {
+      "joint": "left_middle_proximal_joint",
+      "multiplier": 1.155,
+      "offset": 0.0
+    },
+    "left_ring_distal_joint": {
+      "joint": "left_ring_proximal_joint",
+      "multiplier": 1.155,
+      "offset": 0.0
+    },
+    "left_pinky_distal_joint": {
+      "joint": "left_pinky_proximal_joint",
+      "multiplier": 1.155,
+      "offset": 0.0
+    },
+    "right_thumb_distal_joint": {
+      "joint": "right_thumb_proximal_joint",
+      "multiplier": 1.0,
+      "offset": 0.0
+    },
+    "right_index_distal_joint": {
+      "joint": "right_index_proximal_joint",
+      "multiplier": 1.155,
+      "offset": 0.0
+    },
+    "right_middle_distal_joint": {
+      "joint": "right_middle_proximal_joint",
+      "multiplier": 1.155,
+      "offset": 0.0
+    },
+    "right_ring_distal_joint": {
+      "joint": "right_ring_proximal_joint",
+      "multiplier": 1.155,
+      "offset": 0.0
+    },
+    "right_pinky_distal_joint": {
+      "joint": "right_pinky_proximal_joint",
+      "multiplier": 1.155,
+      "offset": 0.0
+    }
+  },
+  "hand_channels": {
+    "left": [
+      {
+        "joint": "left_thumb_proximal_joint",
+        "upper_rad": 1.0472
+      },
+      {
+        "joint": "left_thumb_metacarpal_joint",
+        "upper_rad": 1.5184
+      },
+      {
+        "joint": "left_index_proximal_joint",
+        "upper_rad": 1.4661
+      },
+      {
+        "joint": "left_middle_proximal_joint",
+        "upper_rad": 1.4661
+      },
+      {
+        "joint": "left_ring_proximal_joint",
+        "upper_rad": 1.4661
+      },
+      {
+        "joint": "left_pinky_proximal_joint",
+        "upper_rad": 1.4661
+      }
+    ],
+    "right": [
+      {
+        "joint": "right_thumb_proximal_joint",
+        "upper_rad": 1.0472
+      },
+      {
+        "joint": "right_thumb_metacarpal_joint",
+        "upper_rad": 1.5184
+      },
+      {
+        "joint": "right_index_proximal_joint",
+        "upper_rad": 1.4661
+      },
+      {
+        "joint": "right_middle_proximal_joint",
+        "upper_rad": 1.4661
+      },
+      {
+        "joint": "right_ring_proximal_joint",
+        "upper_rad": 1.4661
+      },
+      {
+        "joint": "right_pinky_proximal_joint",
+        "upper_rad": 1.4661
+      }
+    ]
+  },
+  "photo_revision": {
+    "source": "../photo_fit.json",
+    "optical_in_palm": {
+      "left": [
+        [
+          0.0,
+          -0.9884416973406678,
+          -0.15160148732218834,
+          0.055
+        ],
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.0085
+        ],
+        [
+          0.0,
+          -0.15160148732218834,
+          0.9884416973406678,
+          -0.018
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "right": [
+        [
+          0.0,
+          0.9884416973406678,
+          -0.15160148732218834,
+          0.055
+        ],
+        [
+          -1.0,
+          0.0,
+          0.0,
+          0.0085
+        ],
+        [
+          0.0,
+          0.15160148732218834,
+          0.9884416973406678,
+          -0.018
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "arm_pose": "Both elbow joints -90 degrees, upper arms down, forearms forward",
+    "hand_pose": "Matched relaxed C-shaped user demonstration; symmetric modest finger flexion and abducted thumbs"
+  },
+  "urdf": "leju_5w_revo2.urdf",
+  "joint_names": [
+    "zarm_l1_joint",
+    "zarm_l2_joint",
+    "zarm_l3_joint",
+    "zarm_l4_joint",
+    "zarm_l5_joint",
+    "zarm_l6_joint",
+    "zarm_l7_joint",
+    "zarm_r1_joint",
+    "zarm_r2_joint",
+    "zarm_r3_joint",
+    "zarm_r4_joint",
+    "zarm_r5_joint",
+    "zarm_r6_joint",
+    "zarm_r7_joint",
+    "left_thumb_metacarpal_joint",
+    "left_thumb_proximal_joint",
+    "left_thumb_distal_joint",
+    "left_index_proximal_joint",
+    "left_index_distal_joint",
+    "left_middle_proximal_joint",
+    "left_middle_distal_joint",
+    "left_ring_proximal_joint",
+    "left_ring_distal_joint",
+    "left_pinky_proximal_joint",
+    "left_pinky_distal_joint",
+    "right_thumb_metacarpal_joint",
+    "right_thumb_proximal_joint",
+    "right_thumb_distal_joint",
+    "right_index_proximal_joint",
+    "right_index_distal_joint",
+    "right_middle_proximal_joint",
+    "right_middle_distal_joint",
+    "right_ring_proximal_joint",
+    "right_ring_distal_joint",
+    "right_pinky_proximal_joint",
+    "right_pinky_distal_joint"
+  ],
+  "initial_q": {
+    "zarm_l1_joint": 0.0,
+    "zarm_l2_joint": 0.0,
+    "zarm_l3_joint": 0.0,
+    "zarm_l4_joint": -1.5707963267948966,
+    "zarm_l5_joint": 0.0,
+    "zarm_l6_joint": 0.0,
+    "zarm_l7_joint": 0.0,
+    "zarm_r1_joint": 0.0,
+    "zarm_r2_joint": 0.0,
+    "zarm_r3_joint": 0.0,
+    "zarm_r4_joint": -1.5707963267948966,
+    "zarm_r5_joint": 0.0,
+    "zarm_r6_joint": 0.0,
+    "zarm_r7_joint": 0.0,
+    "left_thumb_proximal_joint": 0.23038399999999998,
+    "left_thumb_metacarpal_joint": 0.3796,
+    "left_index_proximal_joint": 0.234576,
+    "left_middle_proximal_joint": 0.26389799999999997,
+    "left_ring_proximal_joint": 0.278559,
+    "left_pinky_proximal_joint": 0.29322,
+    "right_thumb_proximal_joint": 0.23038399999999998,
+    "right_thumb_metacarpal_joint": 0.3796,
+    "right_index_proximal_joint": 0.234576,
+    "right_middle_proximal_joint": 0.26389799999999997,
+    "right_ring_proximal_joint": 0.278559,
+    "right_pinky_proximal_joint": 0.29322,
+    "left_thumb_distal_joint": 0.23038399999999998,
+    "left_index_distal_joint": 0.27093528,
+    "left_middle_distal_joint": 0.30480219,
+    "left_ring_distal_joint": 0.321735645,
+    "left_pinky_distal_joint": 0.3386691,
+    "right_thumb_distal_joint": 0.23038399999999998,
+    "right_index_distal_joint": 0.27093528,
+    "right_middle_distal_joint": 0.30480219,
+    "right_ring_distal_joint": 0.321735645,
+    "right_pinky_distal_joint": 0.3386691
+  },
+  "base_xyz": [
+    0.7245770108511387,
+    -0.12960724097090948,
+    0.003
+  ],
+  "base_yaw_rad": -1.949351354759632,
+  "base_mesh_x_bounds": [
+    -0.35499998927116394,
+    0.36019644141197205
+  ],
+  "base_mesh_width_m": 0.7099999785423279,
+  "locked_torso_head": {
+    "knee_joint": 0.10428710372139345,
+    "leg_joint": -0.23842772682237373,
+    "waist_pitch_joint": 0.12957095803668503,
+    "waist_yaw_joint": -0.00012902280103474658,
+    "zhead_1_joint": 0.0100811550686791,
+    "zhead_2_joint": 0.46
+  },
+  "initial_waist_world": [
+    [
+      -0.36969421435473276,
+      0.9291519443466256,
+      0.0016888426575340162,
+      0.6822108359847489
+    ],
+    [
+      -0.929142242167223,
+      -0.36969807183232295,
+      0.004246116334715944,
+      -0.23612498336514762
+    ],
+    [
+      0.004569649122441822,
+      5.895889327950215e-07,
+      0.9999895590987686,
+      1.077017371028521
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "initial_eef_world": {
+    "l": [
+      [
+        0.001688842657533934,
+        0.9291519443466256,
+        0.36969421435473276,
+        0.7525742524484925
+      ],
+      [
+        0.004246116334715737,
+        -0.36969807183232295,
+        0.929142242167223,
+        -0.7428133981383582
+      ],
+      [
+        0.9999895590987686,
+        5.895889327950215e-07,
+        -0.0045696491224416,
+        1.0173493732561756
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "r": [
+      [
+        0.001688842657533934,
+        0.9291519443466256,
+        0.36969421435473276,
+        0.2829808597757081
+      ],
+      [
+        0.004246116334715737,
+        -0.36969807183232295,
+        0.929142242167223,
+        -0.5559679926343022
+      ],
+      [
+        0.9999895590987686,
+        5.895889327950215e-07,
+        -0.0045696491224416,
+        1.0173490752779286
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "initial_camera_world": {
+    "head_camera_color_optical_frame": [
+      [
+        -0.9328316116118455,
+        0.29002220557596037,
+        -0.2138043606910364,
+        0.640086510691511
+      ],
+      [
+        0.36031261747195314,
+        0.7509280813420826,
+        -0.5534273523619957,
+        -0.34524051079152485
+      ],
+      [
+        4.5476998200331484e-05,
+        -0.5932909378414222,
+        -0.8049881123389889,
+        1.5022386565056576
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "left_wrist_camera_color_optical_frame": [
+      [
+        -0.0016888426575342496,
+        0.9744587177079457,
+        -0.22456036002256496,
+        0.7451091679658757
+      ],
+      [
+        -0.004246116334715479,
+        -0.22456564377908944,
+        -0.9744497124686088,
+        -0.612805127623003
+      ],
+      [
+        -0.9999895590987685,
+        -0.0006921828292175818,
+        0.004516921117396405,
+        1.0253100334846759
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "right_wrist_camera_color_optical_frame": [
+      [
+        -0.0016888426575336181,
+        0.8623663322067749,
+        -0.5062819934450682,
+        0.37772248917122
+      ],
+      [
+        -0.004246116334715994,
+        -0.5062843354719371,
+        -0.8623561573687581,
+        -0.46662651002050254
+      ],
+      [
+        -0.9999895590987685,
+        0.0006933483777885483,
+        0.004516742352278406,
+        1.0253098003612113
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  }
+}
